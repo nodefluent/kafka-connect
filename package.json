@@ -1,0 +1,23 @@
+{
+  "name": "kafka-connect",
+  "version": "0.9.0",
+  "description": "wip",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodefluent/kafka-connect.git"
+  },
+  "keywords": [
+    "kafka",
+    "connect"
+  ],
+  "author": "Chris Froehlingsdorf <chris@5cf.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nodefluent/kafka-connect/issues"
+  },
+  "homepage": "https://github.com/nodefluent/kafka-connect#readme"
+}

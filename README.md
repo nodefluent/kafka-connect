@@ -1,2 +1,2 @@
-# kafka-connect
+# node-kafka-connect
 WIP

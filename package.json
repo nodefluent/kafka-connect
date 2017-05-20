@@ -1,7 +1,7 @@
 {
   "name": "kafka-connect",
-  "version": "0.9.0",
-  "description": "wip",
+  "version": "0.10.0",
+  "description": "kafka-connect is a framework to move data via kafka",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,12 +12,24 @@
   },
   "keywords": [
     "kafka",
-    "connect"
+    "connect",
+    "framework",
+    "move",
+    "data",
+    "postgres",
+    "cassandra",
+    "bigquery",
+    "stream",
+    "fluent"
   ],
   "author": "Chris Froehlingsdorf <chris@5cf.de>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nodefluent/kafka-connect/issues"
   },
-  "homepage": "https://github.com/nodefluent/kafka-connect#readme"
+  "homepage": "https://github.com/nodefluent/kafka-connect#readme",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "sinek": "^4.2.0"
+  }
 }

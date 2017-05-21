@@ -1,10 +1,10 @@
 {
   "name": "kafka-connect",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "kafka-connect is a framework to move data via kafka",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "istanbul cover _mocha -- --recursive --timeout 12500 -R spec test/unit && istanbul check-coverage --statements 60"
   },
   "repository": {
     "type": "git",
@@ -31,5 +31,9 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "sinek": "^4.2.0"
+  },
+  "devDependencies": {
+    "istanbul": "~0.4.2",
+    "mocha": "~3.4.1"
   }
 }

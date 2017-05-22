@@ -4,7 +4,7 @@ const assert = require("assert");
 
 const {SourceConnector, SourceTask, SinkConnector,
     SinkTask, SourceConfig,
-    SinkConfig} = require("./../../index.js");
+    SinkConfig, Converter} = require("./../../index.js");
 
 describe("Common UNIT", function() {
 
@@ -62,13 +62,21 @@ describe("Common UNIT", function() {
             }
         }
 
+        class TestConverter extends Converter {
+            constructor(){ super(); }
+            toConnectData(){
+            }
+            fromConnectData(){
+            }
+        }
+
         it("should be able to create source setup", function () {
-            const config = new TestSourceConfig({}, TestSourceConnector, TestSourceTask);
+            const config = new TestSourceConfig({}, TestSourceConnector, TestSourceTask, [TestConverter]);
             config.run();
         });
 
         it("should be able to create sink setup", function () {
-            const config = new TestSinkConfig({}, TestSinkConnector, TestSinkTask);
+            const config = new TestSinkConfig({}, TestSinkConnector, TestSinkTask, [TestConverter]);
             config.run();
         });
     });

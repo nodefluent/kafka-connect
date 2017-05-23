@@ -3,17 +3,19 @@
 ```es6
 class SequelizeSourceConnector extends SourceConnector {
 
-    start(properties){
+    start(properties, callback){
         //reads config
         //opens db connection
         //tests initial connection
         //starts table monitor thread
+        callback(null);
     }
 
-    taskConfigs(maxTasks){
+    taskConfigs(maxTasks, callback){
         //reads config
         //reads tables from table monitor
         //returns a map of task properties
+        callback(null, config);
     }
 
     stop(){
@@ -24,13 +26,15 @@ class SequelizeSourceConnector extends SourceConnector {
 
 class SequelizeSinkConnector extends SinkConnector {
 
-    start(properties){
+    start(properties, callback){
         //stores properties
+        callback();
     }
 
-    taskConfigs(maxTasks){
+    taskConfigs(maxTasks, callback()){
         //reads config
         //returns map of task properties
+        callback();
     }
 
     stop(){
@@ -40,33 +44,37 @@ class SequelizeSinkConnector extends SinkConnector {
 
 class SequelizeSourceTask extends SourceTask {
 
-    start(properties){
+    start(properties, callback){
         //reads config
         //opens db connection
         //reads offsets for table?
+        callback();
     }
 
     stop(){
         //close db connection
     }
 
-    poll(){
+    poll(callback){
         //polls the table
         //returns a list of SourceRecords
+        callback(null, records);
     }
 }
 
 class SequelizeSinkTask extends SinkTask {
 
-    start(properties){
+    start(properties, callback){
         //stores config
         //opens db connection
+        callback();
     }
 
-    put(records){
+    put(records, callback){
         //upserts list of SinkRecords into table
         //retries on first fails
         //finally emits specific error to stop offset commits
+        callback(null);
     }
 
     stop(){
@@ -78,21 +86,18 @@ class JsonConverter extends Converter {
 
     /**
      * Convert a Kafka Connect data object to a native object for serialization.
-     * @param topic
-     * @param schema
-     * @param objectValue
      */
-    fromConnectData(topic, schema, objectValue){
+    fromConnectData({topic, schema, objectValue}, callback){
         //returns byte[]
+        callback(byte[]);
     }
 
     /**
      * Convert a native object to a Kafka Connect data object.
-     * @param topic
-     * @param byteValue
      */
-    toConnectData(topic, byteValue){
+    toConnectData({topic, byteValue}, callback){
         //returns SchemaAndValue
+        callback(SchemaAndValue);
     }
 }
 ```

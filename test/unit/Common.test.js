@@ -13,12 +13,14 @@ describe("Common UNIT", function() {
         class TestSourceConfig extends SourceConfig {
             constructor(...args){ super(...args); }
             run(){
+                super.run();
             }
         }
 
         class TestSinkConfig extends SinkConfig {
             constructor(...args){ super(...args); }
             run(){
+                super.run();
             }
         }
 
@@ -70,14 +72,23 @@ describe("Common UNIT", function() {
             }
         }
 
+        const config = {
+            kafka: {},
+            topic: "topic",
+            partitions: 30,
+            maxTasks: 1,
+            connector: {},
+            pollInterval: 5000
+        };
+
         it("should be able to create source setup", function () {
-            const config = new TestSourceConfig({}, TestSourceConnector, TestSourceTask, [TestConverter]);
-            config.run();
+            const source = new TestSourceConfig(config, TestSourceConnector, TestSourceTask, [TestConverter]);
+            source.run();
         });
 
         it("should be able to create sink setup", function () {
-            const config = new TestSinkConfig({}, TestSinkConnector, TestSinkTask, [TestConverter]);
-            config.run();
+            const sink = new TestSinkConfig(config, TestSinkConnector, TestSinkTask, [TestConverter]);
+            sink.run();
         });
     });
 });

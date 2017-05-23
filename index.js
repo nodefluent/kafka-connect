@@ -1,15 +1,5 @@
 "use strict";
 
-//Sink = Kafka -> Datastore
-//Source = Datastore -> Kafka
-
-//1. connect to datastore
-//2. connect to kafka
-//3. pull from datastore / consume from kafka
-//4. apply converter to key and value
-//5. write to datastore / produce to kafka
-//6. poll / stream
-
 const SourceConnector = require("./lib/source/SourceConnector.js");
 const SinkConnector = require("./lib/sink/SinkConnector.js");
 

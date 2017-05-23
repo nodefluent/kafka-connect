@@ -344,7 +344,7 @@ describe("Common UNIT", function() {
             });
         });
 
-        it.only("should be able to fail gracefully on failing retry sink setup", function () {
+        it("should be able to fail gracefully on failing retry sink setup", function () {
             const consumer = new FakeConsumer();
             const sink = new TestSinkConfig(config, TestSinkConnector, FailTestSinkTask, [TestConverter], consumer);
             sink.on("error", error => console.log(error));

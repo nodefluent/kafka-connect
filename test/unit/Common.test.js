@@ -299,7 +299,7 @@ describe("Common UNIT", function() {
         it("should be able to run source setup", function (done) {
             const producer = new FakeProducer();
             const source = new TestSourceConfig(config, TestSourceConnector, TestSourceTask, [TestConverter], producer);
-            source.on("error", error => console.log(error));
+            //source.on("error", error => console.log(error));
             source.run().then(() => {
                 setTimeout(() => {
                     console.log(producer.__getSentMessages());
@@ -312,7 +312,7 @@ describe("Common UNIT", function() {
         it("should be able to run sink setup", function (done) {
             const consumer = new FakeConsumer();
             const sink = new TestSinkConfig(config, TestSinkConnector, TestSinkTask, [TestConverter], consumer);
-            sink.on("error", error => console.log(error));
+            //sink.on("error", error => console.log(error));
             sink.run().then(() => {
                 consumer.__consumeMessage({
                     offset: 5,
@@ -328,7 +328,7 @@ describe("Common UNIT", function() {
         it("should be able to run retry sink setup", function () {
             const consumer = new FakeConsumer();
             const sink = new TestSinkConfig(config, TestSinkConnector, RetryTestSinkTask, [TestConverter], consumer);
-            sink.on("error", error => console.log(error));
+            //sink.on("error", error => console.log(error));
             return sink.run().then(() => {
                 return new Promise(resolve => {
                     consumer.__consumeMessage({
@@ -347,7 +347,7 @@ describe("Common UNIT", function() {
         it("should be able to fail gracefully on failing retry sink setup", function () {
             const consumer = new FakeConsumer();
             const sink = new TestSinkConfig(config, TestSinkConnector, FailTestSinkTask, [TestConverter], consumer);
-            sink.on("error", error => console.log(error));
+            //sink.on("error", error => console.log(error));
             return sink.run().then(() => {
                 return new Promise(resolve => {
                     consumer.__consumeMessage({

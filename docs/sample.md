@@ -31,7 +31,7 @@ class SequelizeSinkConnector extends SinkConnector {
         callback();
     }
 
-    taskConfigs(maxTasks, callback()){
+    taskConfigs(maxTasks, callback){
         //reads config
         //returns map of task properties
         callback();

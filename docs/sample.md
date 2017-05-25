@@ -15,7 +15,7 @@ class SequelizeSourceConnector extends SourceConnector {
         //reads config
         //reads tables from table monitor
         //returns a map of task properties
-        callback(null, config);
+        callback(null, {});
     }
 
     stop(){
@@ -34,7 +34,7 @@ class SequelizeSinkConnector extends SinkConnector {
     taskConfigs(maxTasks, callback){
         //reads config
         //returns map of task properties
-        callback();
+        callback(null, {});
     }
 
     stop(){
@@ -92,14 +92,16 @@ class JsonConverter extends Converter {
      * Convert a Kafka Connect data object to a native object for serialization.
      */
     fromConnectData(data, callback){
-        callback(null, JSON.stringify(data));
+        const messageValue = JSON.stringify(data);
+        callback(null, messageValue);
     }
 
     /**
      * Convert a native object to a Kafka Connect data object.
      */
-    toConnectData({topic, offset, value}, callback){
-        callback(null, JSON.parse(value));
+    toConnectData(message, callback){
+        message.value = JSON.parse(message.value);
+        callback(null, message);
     }
 }
 ```

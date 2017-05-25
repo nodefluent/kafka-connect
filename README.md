@@ -6,6 +6,21 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/nodefluent/kafka-connect/badge.svg?branch=master)](https://coveralls.io/github/nodefluent/kafka-connect?branch=master)
 
-WIP
+## Info
 
-[Sample Interface Implementation Overview](docs/sample.md)
+- node-kafka-connect is a framework to implement large
+`kafka -> datastore` & `datastore -> kafka` data movements
+- 
+
+## Available Connector Implementations
+
+* [Sequelize (MySQl, Postgres, SQLite)](https://github.com/nodefluent/sequelize-kafka-connect)
+* [Google BigQuery](https://github.com/nodefluent/bigquery-kafka-connect)
+
+## Creating custom Connectors
+
+```
+npm install --save kafka-connect
+```
+
+[Quick-Sample Implementation Overview](docs/sample.md)

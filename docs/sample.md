@@ -1,4 +1,4 @@
-# Sample Interface Implementation Overview
+## Sample Connector/Task Implementation
 
 ```es6
 class SequelizeSourceConnector extends SourceConnector {
@@ -81,23 +81,25 @@ class SequelizeSinkTask extends SinkTask {
         //close db connection
     }
 }
+```
 
+## Sample Converter Implementation
+
+```es6
 class JsonConverter extends Converter {
 
     /**
      * Convert a Kafka Connect data object to a native object for serialization.
      */
-    fromConnectData({topic, schema, objectValue}, callback){
-        //returns byte[]
-        callback(byte[]);
+    fromConnectData(data, callback){
+        callback(null, JSON.stringify(data));
     }
 
     /**
      * Convert a native object to a Kafka Connect data object.
      */
-    toConnectData({topic, byteValue}, callback){
-        //returns SchemaAndValue
-        callback(SchemaAndValue);
+    toConnectData({topic, offset, value}, callback){
+        callback(null, JSON.parse(value));
     }
 }
 ```

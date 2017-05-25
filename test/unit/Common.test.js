@@ -4,7 +4,7 @@ const assert = require("assert");
 
 const {SourceConnector, SourceTask, SinkConnector,
     SinkTask, SourceConfig,
-    SinkConfig, Converter} = require("./../../index.js");
+    SinkConfig, Converter, SourceRecord} = require("./../../index.js");
 
 describe("Common UNIT", function() {
 
@@ -75,9 +75,16 @@ describe("Common UNIT", function() {
 
         poll(callback){
             console.log("task poll");
+
+            const record1 = new SourceRecord();
+            record1.value = {id: 1, field: "123"};
+
+            const record2 = new SourceRecord();
+            record2.value = {id: 2, field: "456"};
+
             callback(null, [
-                {id: 1, field: "123"},
-                {id: 2, field: "456"}
+                record1,
+                record2
             ]);
         }
 
@@ -260,6 +267,10 @@ describe("Common UNIT", function() {
 
             send(topic, message){
 
+                if(typeof message !== "string"){
+                    throw new Error("can only produce string messages");
+                }
+
                 this.sent.push({
                     offset: this.offset += 1,
                     topic: topic,
@@ -299,10 +310,11 @@ describe("Common UNIT", function() {
         it("should be able to run source setup", function (done) {
             const producer = new FakeProducer();
             const source = new TestSourceConfig(config, TestSourceConnector, TestSourceTask, [TestConverter], producer);
-            //source.on("error", error => console.log(error));
+            source.on("error", error => console.log(error));
             source.run().then(() => {
                 setTimeout(() => {
                     console.log(producer.__getSentMessages());
+                    assert.equal(producer.__getSentMessages().length, 2);
                     source.stop();
                     done();
                 }, 8);
@@ -311,14 +323,17 @@ describe("Common UNIT", function() {
 
         it("should be able to run sink setup", function (done) {
             const consumer = new FakeConsumer();
-            const sink = new TestSinkConfig(config, TestSinkConnector, TestSinkTask, [TestConverter], consumer);
+            const sink = new TestSinkConfig(config, TestSinkConnector, TestSinkTask, [], consumer);
             //sink.on("error", error => console.log(error));
             sink.run().then(() => {
+                const record = new SourceRecord();
+                record.value = {bla: "bla"};
                 consumer.__consumeMessage({
                     offset: 5,
                     topic: "test",
-                    value: JSON.stringify({bla: "bla"})
-                }, () => {
+                    value: JSON.stringify(record)
+                }, error => {
+                    assert.ifError(error);
                     sink.stop();
                     done();
                 });
@@ -327,14 +342,16 @@ describe("Common UNIT", function() {
 
         it("should be able to run retry sink setup", function () {
             const consumer = new FakeConsumer();
-            const sink = new TestSinkConfig(config, TestSinkConnector, RetryTestSinkTask, [TestConverter], consumer);
+            const sink = new TestSinkConfig(config, TestSinkConnector, RetryTestSinkTask, [], consumer);
             //sink.on("error", error => console.log(error));
             return sink.run().then(() => {
                 return new Promise(resolve => {
+                    const record = new SourceRecord();
+                    record.value = {bla: "bla"};
                     consumer.__consumeMessage({
                         offset: 5,
                         topic: "test",
-                        value: JSON.stringify({bla: "bla"})
+                        value: JSON.stringify(record)
                     }, error => {
                         assert.ifError(error);
                         sink.stop();
@@ -346,14 +363,16 @@ describe("Common UNIT", function() {
 
         it("should be able to fail gracefully on failing retry sink setup", function () {
             const consumer = new FakeConsumer();
-            const sink = new TestSinkConfig(config, TestSinkConnector, FailTestSinkTask, [TestConverter], consumer);
+            const sink = new TestSinkConfig(config, TestSinkConnector, FailTestSinkTask, [], consumer);
             //sink.on("error", error => console.log(error));
             return sink.run().then(() => {
                 return new Promise(resolve => {
+                    const record = new SourceRecord();
+                    record.value = {bla: "bla"};
                     consumer.__consumeMessage({
                         offset: 5,
                         topic: "test",
-                        value: JSON.stringify({bla: "bla"})
+                        value: JSON.stringify(record)
                     }, error => {
                         assert.ok(error);
                         sink.stop();

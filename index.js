@@ -6,10 +6,13 @@ const SinkConnector = require("./lib/sink/SinkConnector.js");
 const SourceTask = require("./lib/source/SourceTask.js");
 const SinkTask = require("./lib/sink/SinkTask.js");
 
-const Converter = require("./lib/utils/Converter.js");
+const Converter = require("./lib/common/Converter.js");
 
 const SourceConfig = require("./lib/source/SourceConfig.js");
 const SinkConfig = require("./lib/sink/SinkConfig.js");
+
+const SourceRecord = require("./lib/source/SourceRecord.js");
+const SinkRecord = require("./lib/sink/SinkRecord.js");
 
 module.exports = {
     SourceConnector,
@@ -18,5 +21,7 @@ module.exports = {
     SinkTask,
     Converter,
     SourceConfig,
-    SinkConfig
+    SinkConfig,
+    SourceRecord,
+    SinkRecord
 };

@@ -2,85 +2,92 @@
 
 const assert = require("assert");
 
-const {SourceConnector, SourceTask, SinkConnector,
-    SinkTask, SourceConfig,
-    SinkConfig, Converter, SourceRecord} = require("./../../index.js");
+const {
+    SourceConnector,
+    SourceTask,
+    SinkConnector,
+    SinkTask,
+    SourceConfig,
+    SinkConfig,
+    Converter,
+    SourceRecord
+} = require("./../../index.js");
 
 describe("Common UNIT", function() {
 
     class TestSourceConfig extends SourceConfig {
 
-        constructor(...args){ super(...args); }
+        constructor(...args) { super(...args); }
 
-        run(){
+        run() {
             return super.run();
         }
     }
 
     class TestSinkConfig extends SinkConfig {
 
-        constructor(...args){ super(...args); }
+        constructor(...args) { super(...args); }
 
-        run(){
+        run() {
             return super.run();
         }
     }
 
     class TestSourceConnector extends SourceConnector {
 
-        constructor(){ super(); }
+        constructor() { super(); }
 
-        start(properties, callback){
+        start(properties, callback) {
             console.log("con start");
             callback();
         }
 
-        taskConfigs(maxTasks, callback){
+        taskConfigs(maxTasks, callback) {
             console.log("con taskConfigs");
-            callback({maxTasks});
+            callback(null, { maxTasks });
         }
 
-        stop(){
+        stop() {
             console.log("con stop");
         }
     }
 
     class TestSinkConnector extends SinkConnector {
 
-        constructor(){ super(); }
+        constructor() { super(); }
 
-        start(properties, callback){
+        start(properties, callback) {
             console.log("con start");
             callback();
         }
 
-        taskConfigs(maxTasks, callback){
+        taskConfigs(maxTasks, callback) {
             console.log("con taskConfigs");
-            callback(null, {maxTasks});
+            callback(null, { maxTasks });
         }
 
-        stop(){
+        stop() {
             console.log("con stop");
         }
     }
 
     class TestSourceTask extends SourceTask {
 
-        constructor(){ super(); }
+        constructor() { super(); }
 
-        start(properties, callback){
+        start(properties, callback) {
             console.log("task start");
             callback();
         }
 
-        poll(callback){
+        poll(callback) {
             console.log("task poll");
 
             const record1 = new SourceRecord();
-            record1.value = {id: 1, field: "123"};
+            record1.value = { id: 1, field: "123" };
 
             const record2 = new SourceRecord();
-            record2.value = {id: 2, field: "456"};
+            record2.value = { id: 2, field: "456" };
 
             callback(null, [
                 record1,
@@ -88,35 +95,35 @@ describe("Common UNIT", function() {
             ]);
         }
 
-        stop(){
+        stop() {
             console.log("task stop");
         }
     }
 
     class RetryTestSinkTask extends SinkTask {
 
-        constructor(){
+        constructor() {
             super();
             this.attempts = -1;
         }
 
-        start(properties, callback){
+        start(properties, callback) {
             console.log("task start");
             callback();
         }
 
-        put(records, callback){
+        put(records, callback) {
 
             console.log("task put");
             console.log(records[0]);
 
             this.attempts++;
 
-            if(this.attempts === 0){
+            if (this.attempts === 0) {
                 throw new Error("failed to sink 1");
             }
 
-            if(this.attempts === 1){
+            if (this.attempts === 1) {
                 return callback(new Error("failed to sink 2"));
             }
 
@@ -124,61 +131,61 @@ describe("Common UNIT", function() {
             callback();
         }
 
-        stop(){
+        stop() {
             console.log("task stop");
         }
     }
 
     class FailTestSinkTask extends SinkTask {
 
-        constructor(){ super(); }
+        constructor() { super(); }
 
-        start(properties, callback){
+        start(properties, callback) {
             console.log("task start");
             callback();
         }
 
-        put(records, callback){
+        put(records, callback) {
             console.log("task put");
             console.log(records[0]);
             throw new Error("sink fails");
         }
 
-        stop(){
+        stop() {
             console.log("task stop");
         }
     }
 
     class TestSinkTask extends SinkTask {
 
-        constructor(){ super(); }
+        constructor() { super(); }
 
-        start(properties, callback){
+        start(properties, callback) {
             console.log("task start");
             callback();
         }
 
-        put(records, callback){
+        put(records, callback) {
             console.log("task put");
             console.log(records[0]);
             callback();
         }
 
-        stop(){
+        stop() {
             console.log("task stop");
         }
     }
 
     class TestConverter extends Converter {
 
-        constructor(){ super(); }
+        constructor() { super(); }
 
-        toConnectData(data, callback){
+        toConnectData(data, callback) {
             console.log("toConnectData");
             callback(null, data);
         }
 
-        fromConnectData(data, callback){
+        fromConnectData(data, callback) {
             console.log("fromConnectData");
             callback(null, data);
         }
@@ -193,81 +200,78 @@ describe("Common UNIT", function() {
         pollInterval: 5
     };
 
-    describe("Inherit Interface", function(){
+    describe("Inherit Interface", function() {
 
-        class BadTestConverter extends Converter {
+        class BadTestConverter extends Converter {}
+
+        class BadTestConverter2 {
+            toConnectData() {}
+            fromConnectData() {}
         }
 
-        class BadTestConverter2{
-            toConnectData(){
-            }
-            fromConnectData(){
-            }
-        }
-
-        it("should be able to create source setup", function () {
+        it("should be able to create source setup", function() {
             const source = new TestSourceConfig(config, TestSourceConnector, TestSourceTask, [TestConverter]);
             assert.doesNotThrow(source.run.bind(source));
         });
 
-        it("should be able to create sink setup", function () {
+        it("should be able to create sink setup", function() {
             const sink = new TestSinkConfig(config, TestSinkConnector, TestSinkTask, [TestConverter]);
             assert.doesNotThrow(sink.run.bind(sink));
         });
 
-        it("should throw on bad implementation", function () {
+        it("should throw on bad implementation", function() {
             assert.throws(() => {
                 new TestSourceConfig(config, TestSourceConnector, TestSourceTask, [BadTestConverter])
             }, /functions/);
         });
 
-        it("should throw on bad inheritance", function () {
+        it("should throw on bad inheritance", function() {
             assert.throws(() => {
                 new TestSourceConfig(config, TestSourceConnector, TestSourceTask, [BadTestConverter2]);
             }, /inherit/);
         });
     });
 
-    describe("Inherit Interface Mock", function(){
+    describe("Inherit Interface Mock", function() {
 
         class FakeConsumer {
 
-            constructor(){
+            constructor() {
                 this.syncFunc = null;
             }
 
-            connect(){
+            connect() {
                 return Promise.resolve();
             }
 
-            consume(syncFunc){
+            consume(syncFunc) {
                 this.syncFunc = syncFunc;
                 return Promise.resolve();
             }
 
-            __consumeMessage(message, callback){
+            __consumeMessage(message, callback) {
                 this.syncFunc(message, callback);
             }
 
-            close(){
+            close() {
                 this.syncFunc = null;
             }
         }
 
         class FakeProducer {
 
-            constructor(){
+            constructor() {
                 this.offset = -1;
                 this.sent = [];
             }
 
-            connect(){
+            connect() {
                 return Promise.resolve();
             }
 
-            send(topic, message){
+            send(topic, message) {
 
-                if(typeof message !== "string"){
+                if (typeof message !== "string") {
                     throw new Error("can only produce string messages");
                 }
 
@@ -280,16 +284,16 @@ describe("Common UNIT", function() {
                 return Promise.resolve();
             }
 
-            __getSentMessages(){
+            __getSentMessages() {
                 return this.sent;
             }
 
-            close(){
+            close() {
                 this.sent = [];
             }
         }
 
-        it("should be able to create and await source setup", function () {
+        it("should be able to create and await source setup", function() {
             const producer = new FakeProducer();
             const source = new TestSourceConfig(config, TestSourceConnector, TestSourceTask, [TestConverter], producer);
             return source.run().then(_ => {
@@ -298,7 +302,7 @@ describe("Common UNIT", function() {
             })
         });
 
-        it("should be able to create and await sink setup", function () {
+        it("should be able to create and await sink setup", function() {
             const consumer = new FakeConsumer();
             const sink = new TestSinkConfig(config, TestSinkConnector, TestSinkTask, [TestConverter], consumer);
             return sink.run().then(_ => {
@@ -307,7 +311,7 @@ describe("Common UNIT", function() {
             });
         });
 
-        it("should be able to run source setup", function (done) {
+        it("should be able to run source setup", function(done) {
             const producer = new FakeProducer();
             const source = new TestSourceConfig(config, TestSourceConnector, TestSourceTask, [TestConverter], producer);
             source.on("error", error => console.log(error));
@@ -321,13 +325,13 @@ describe("Common UNIT", function() {
             });
         });
 
-        it("should be able to run sink setup", function (done) {
+        it("should be able to run sink setup", function(done) {
             const consumer = new FakeConsumer();
             const sink = new TestSinkConfig(config, TestSinkConnector, TestSinkTask, [], consumer);
             //sink.on("error", error => console.log(error));
             sink.run().then(() => {
                 const record = new SourceRecord();
-                record.value = {bla: "bla"};
+                record.value = { bla: "bla" };
                 consumer.__consumeMessage({
                     offset: 5,
                     topic: "test",
@@ -340,14 +344,14 @@ describe("Common UNIT", function() {
             });
         });
 
-        it("should be able to run retry sink setup", function () {
+        it("should be able to run retry sink setup", function() {
             const consumer = new FakeConsumer();
             const sink = new TestSinkConfig(config, TestSinkConnector, RetryTestSinkTask, [], consumer);
             //sink.on("error", error => console.log(error));
             return sink.run().then(() => {
                 return new Promise(resolve => {
                     const record = new SourceRecord();
-                    record.value = {bla: "bla"};
+                    record.value = { bla: "bla" };
                     consumer.__consumeMessage({
                         offset: 5,
                         topic: "test",
@@ -361,14 +365,14 @@ describe("Common UNIT", function() {
             });
         });
 
-        it("should be able to fail gracefully on failing retry sink setup", function () {
+        it("should be able to fail gracefully on failing retry sink setup", function() {
             const consumer = new FakeConsumer();
             const sink = new TestSinkConfig(config, TestSinkConnector, FailTestSinkTask, [], consumer);
             //sink.on("error", error => console.log(error));
             return sink.run().then(() => {
                 return new Promise(resolve => {
                     const record = new SourceRecord();
-                    record.value = {bla: "bla"};
+                    record.value = { bla: "bla" };
                     consumer.__consumeMessage({
                         offset: 5,
                         topic: "test",

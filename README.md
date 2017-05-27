@@ -21,7 +21,7 @@ data from a kafka topic into a datastore.
 
 ## Available Connector Implementations
 
-* [Sequelize (MySQl, Postgres, SQLite)](https://github.com/nodefluent/sequelize-kafka-connect)
+* [Sequelize (MySQl, Postgres, SQLite, MSSQL)](https://github.com/nodefluent/sequelize-kafka-connect)
 * [Google BigQuery](https://github.com/nodefluent/bigquery-kafka-connect)
 
 ## Creating custom Connectors

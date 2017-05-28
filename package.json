@@ -1,6 +1,6 @@
 {
     "name": "kafka-connect",
-    "version": "1.20.0",
+    "version": "1.21.0",
     "description": "kafka-connect is a framework to move data via kafka",
     "main": "index.js",
     "scripts": {
@@ -33,7 +33,7 @@
         "async": "^2.4.1",
         "bluebird": "^3.5.0",
         "express": "^4.15.3",
-        "sinek": "^4.2.0"
+        "sinek": "^4.3.0"
     },
     "devDependencies": {
         "coveralls": "^2.13.1",

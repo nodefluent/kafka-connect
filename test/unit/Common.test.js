@@ -13,6 +13,8 @@ const {
     SourceRecord
 } = require("./../../index.js");
 
+const SourceBaseConverter = require("./../../lib/source/SourceBaseConverter.js");
+
 describe("Common UNIT", function() {
 
     class TestSourceConfig extends SourceConfig {
@@ -210,7 +212,7 @@ describe("Common UNIT", function() {
         }
 
         it("should be able to create source setup", function() {
-            const source = new TestSourceConfig(config, TestSourceConnector, TestSourceTask, [TestConverter]);
+            const source = new TestSourceConfig(config, TestSourceConnector, TestSourceTask, [SourceBaseConverter, TestConverter]);
             assert.doesNotThrow(source.run.bind(source));
         });
 
@@ -295,7 +297,7 @@ describe("Common UNIT", function() {
 
         it("should be able to create and await source setup", function() {
             const producer = new FakeProducer();
-            const source = new TestSourceConfig(config, TestSourceConnector, TestSourceTask, [TestConverter], producer);
+            const source = new TestSourceConfig(config, TestSourceConnector, TestSourceTask, [SourceBaseConverter, TestConverter], producer);
             return source.run().then(_ => {
                 source.stop();
                 return true;
@@ -313,7 +315,7 @@ describe("Common UNIT", function() {
 
         it("should be able to run source setup", function(done) {
             const producer = new FakeProducer();
-            const source = new TestSourceConfig(config, TestSourceConnector, TestSourceTask, [TestConverter], producer);
+            const source = new TestSourceConfig(config, TestSourceConnector, TestSourceTask, [SourceBaseConverter, TestConverter], producer);
             source.on("error", error => console.log(error));
             source.run().then(() => {
                 setTimeout(() => {

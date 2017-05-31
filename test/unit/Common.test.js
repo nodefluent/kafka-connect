@@ -93,6 +93,7 @@ describe("Common UNIT", function() {
 
             callback(null, [
                 record1,
+                null,
                 record2
             ]);
         }

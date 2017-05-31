@@ -315,8 +315,8 @@ describe("Common UNIT", function() {
         });
 
         it("should be able to run source setup", function(done) {
-            const producer = new FakeProducer();
-            const source = new TestSourceConfig(config, TestSourceConnector, TestSourceTask, [SourceBaseConverter, TestConverter], producer);
+            const producer = new FakeProducer(); //it should be possible to toss in intances of Converters
+            const source = new TestSourceConfig(config, TestSourceConnector, TestSourceTask, [new SourceBaseConverter(), TestConverter], producer);
             source.on("error", error => console.log(error));
             source.run().then(() => {
                 setTimeout(() => {

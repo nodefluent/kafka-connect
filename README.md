@@ -6,6 +6,12 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/nodefluent/kafka-connect/badge.svg?branch=master)](https://coveralls.io/github/nodefluent/kafka-connect?branch=master)
 
+## What can I do with this?
+The framework can be used to build connectors,
+that transfer data `to` and `from` Apache Kafka and Databases,
+very easily. If you are looking for already implemented connectors
+for you favorite datastore, take a look at the `Available Connector Implementations` below.
+
 ## Info
 
 - node-kafka-connect is a framework to implement large
@@ -18,6 +24,8 @@ poll data from a datastore into a kafka topic.
 data from a kafka topic into a datastore.
 - Converters might be used to apply alteration to any data-stream.
 - any operation in node-kafka-connect is asynchronous
+- ships with auto http server (health-checks, kafka-stats)
+- ships with auto metrics (prometheus)
 
 ## Available Connector Implementations
 
@@ -48,4 +56,7 @@ const sink = new TestSinkConfig(config,
 sink.run().then();
 ```
 
-[Quick-Sample Implementation Overview](docs/sample.md)
+## Docs
+
+* [Implementation-Helper Overview](docs/sample.md)
+* [Framework Events](docs/events.md)

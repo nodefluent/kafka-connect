@@ -105,3 +105,57 @@ class JsonConverter extends Converter {
     }
 }
 ```
+
+## Configuration
+
+```es6
+const properties = {
+    kafka: {
+        zkConStr: "localhost:2181/",
+        logger: null,
+        groupId: "nkc-test",
+        clientName: "nkc-test-name",
+        workerPerPartition: 1,
+        options: {
+            sessionTimeout: 8000,
+            protocol: ["roundrobin"],
+            fromOffset: "earliest", //latest
+            fetchMaxBytes: 1024 * 100,
+            fetchMinBytes: 1,
+            fetchMaxWaitMs: 10,
+            heartbeatInterval: 250,
+            retryMinTimeout: 250,
+            requireAcks: 1,
+            ackTimeoutMs: 100,
+            partitionerType: 3
+        }
+    },
+    topic: "nkc_test_topic",
+    partitions: 1,
+    maxTasks: 1,
+    pollInterval: 2000,
+    produceKeyed: true,
+    produceCompressionType: 0,
+    connector: {},
+    http: {
+        port: 3484,
+        middlewares: [
+            (req, res ,next) => { next(); }
+        ]
+    },
+    enableMetrics: true
+};
+```
+
+## Automatically exposed http endpoints
+
+```
+    GET /
+
+    GET /alive
+    GET /admin/healthcheck
+    GET /admin/health
+
+    GET /admin/kafka
+    GET /admin/metrics
+```

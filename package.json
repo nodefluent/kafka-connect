@@ -1,46 +1,47 @@
 {
-  "name": "kafka-connect",
-  "version": "1.26.0",
-  "description": "kafka-connect is a framework to move data via kafka",
-  "main": "index.js",
-  "scripts": {
-    "test": "istanbul cover _mocha -- --recursive --timeout 12500 -R spec test && istanbul check-coverage --statements 60",
-    "test-ci": "istanbul cover _mocha --report lcovonly -- -R spec test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nodefluent/kafka-connect.git"
-  },
-  "keywords": [
-    "kafka",
-    "connect",
-    "framework",
-    "move",
-    "data",
-    "postgres",
-    "cassandra",
-    "bigquery",
-    "stream",
-    "fluent"
-  ],
-  "author": "Chris Froehlingsdorf <chris@5cf.de>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/nodefluent/kafka-connect/issues"
-  },
-  "homepage": "https://github.com/nodefluent/kafka-connect#readme",
-  "dependencies": {
-    "async": "^2.4.1",
-    "bluebird": "^3.5.0",
-    "body-parser": "^1.17.2",
-    "express": "^4.15.3",
-    "sinek": "^4.4.0"
-  },
-  "devDependencies": {
-    "coveralls": "^2.13.1",
-    "istanbul": "~0.4.2",
-    "mocha": "~3.4.1",
-    "mocha-lcov-reporter": "^1.3.0",
-    "request": "^2.81.0"
-  }
+    "name": "kafka-connect",
+    "version": "1.27.0",
+    "description": "kafka-connect is a framework to move data via kafka",
+    "main": "index.js",
+    "scripts": {
+        "test": "istanbul cover _mocha -- --recursive --timeout 12500 -R spec test && istanbul check-coverage --statements 60",
+        "test-ci": "istanbul cover _mocha -- --recursive --report lcovonly -R spec test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nodefluent/kafka-connect.git"
+    },
+    "keywords": [
+        "kafka",
+        "connect",
+        "framework",
+        "move",
+        "data",
+        "postgres",
+        "cassandra",
+        "bigquery",
+        "stream",
+        "fluent"
+    ],
+    "author": "Chris Froehlingsdorf <chris@5cf.de>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/nodefluent/kafka-connect/issues"
+    },
+    "homepage": "https://github.com/nodefluent/kafka-connect#readme",
+    "dependencies": {
+        "async": "^2.4.1",
+        "bluebird": "^3.5.0",
+        "body-parser": "^1.17.2",
+        "express": "^4.15.3",
+        "prom-client": "^9.0.0",
+        "sinek": "^4.4.0"
+    },
+    "devDependencies": {
+        "coveralls": "^2.13.1",
+        "istanbul": "~0.4.2",
+        "mocha": "~3.4.1",
+        "mocha-lcov-reporter": "^1.3.0",
+        "request": "^2.81.0"
+    }
 }

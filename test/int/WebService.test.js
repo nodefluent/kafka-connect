@@ -15,7 +15,7 @@ describe("WebService INT", function() {
     let port = 1337;
     let error = null;
 
-    it("should be able to start web service", () => {
+    before(function(done) {
 
         const properties = {
             kafka: {},
@@ -36,7 +36,8 @@ describe("WebService INT", function() {
                         next();
                     }
                 ]
-            }
+            },
+            enableMetrics: true
         };
 
         config = new SourceConfig(properties, SourceConnector, SourceTask, []);
@@ -45,10 +46,11 @@ describe("WebService INT", function() {
         config.on("error", _error => error = _error);
 
         config.run();
+        setTimeout(done, 300);
     });
 
-    it("should await start of server", function(done) {
-        setTimeout(done, 300);
+    after(function() {
+        config.close();
     });
 
     it("should be able to make a web request to the health endpoint", function(done) {
@@ -81,8 +83,19 @@ describe("WebService INT", function() {
         });
     });
 
-    it("should be able to close server", function() {
+    it("should be able to make a web request to the metrics endpoint", function(done) {
+        request(`http://localhost:${port}/admin/metrics`, (error, response, body) => {
+            assert.ifError(error);
+            assert.equal(response.statusCode, 200);
+            assert.ok(body.includes("nodejs_heap_space_size_available_bytes"));
+            assert.ok(body.includes("nkc_total_consumed"));
+            assert.ok(body.includes("nkc_total_produced"));
+            //console.log(body);
+            done();
+        });
+    });
+
+    it("should not see any errors", function() {
         assert.ifError(error);
-        config.close();
     });
 });

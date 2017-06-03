@@ -95,6 +95,18 @@ describe("WebService INT", function() {
         });
     });
 
+    it("should be able to make a web request to the root endpoint", function(done) {
+        request(`http://localhost:${port}/`, (error, response, body) => {
+            assert.ifError(error);
+            assert.equal(response.statusCode, 200);
+            body = JSON.parse(body);
+            assert.ok(body);
+            assert.equal(typeof body, "object");
+            console.log(body);
+            done();
+        });
+    });
+
     it("should not see any errors", function() {
         assert.ifError(error);
     });

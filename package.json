@@ -1,6 +1,6 @@
 {
     "name": "kafka-connect",
-    "version": "1.28.0",
+    "version": "1.29.0",
     "description": "kafka-connect is a framework to move data via kafka",
     "main": "index.js",
     "scripts": {

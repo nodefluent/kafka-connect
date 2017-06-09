@@ -1,5 +1,6 @@
 "use strict";
 
+const EventEmitter = require("events");
 const assert = require("assert");
 
 const {
@@ -237,9 +238,10 @@ describe("Common UNIT", function() {
 
     describe("Inherit Interface Mock", function() {
 
-        class FakeConsumer {
+        class FakeConsumer extends EventEmitter {
 
             constructor() {
+                super();
                 this.syncFunc = null;
             }
 
@@ -261,9 +263,10 @@ describe("Common UNIT", function() {
             }
         }
 
-        class FakeProducer {
+        class FakeProducer extends EventEmitter {
 
             constructor() {
+                super();
                 this.offset = -1;
                 this.sent = [];
             }

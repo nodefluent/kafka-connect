@@ -14,6 +14,9 @@ const SinkConfig = require("./lib/sink/SinkConfig.js");
 const SourceRecord = require("./lib/source/SourceRecord.js");
 const SinkRecord = require("./lib/sink/SinkRecord.js");
 
+const ConverterFactory = require("./lib/utils/ConverterFactory.js");
+const JsonConverter = require("./lib/utils/JsonConverter.js");
+
 module.exports = {
     SourceConnector,
     SinkConnector,
@@ -23,5 +26,7 @@ module.exports = {
     SourceConfig,
     SinkConfig,
     SourceRecord,
-    SinkRecord
+    SinkRecord,
+    ConverterFactory,
+    JsonConverter
 };

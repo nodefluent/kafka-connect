@@ -1,6 +1,6 @@
 {
     "name": "kafka-connect",
-    "version": "1.29.0",
+    "version": "1.30.0",
     "description": "kafka-connect is a framework to move data via kafka",
     "main": "index.js",
     "scripts": {
@@ -34,7 +34,7 @@
         "bluebird": "^3.5.0",
         "body-parser": "^1.17.2",
         "express": "^4.15.3",
-        "prom-client": "^9.0.0",
+        "prom-client": "^9.1.0",
         "sinek": "^4.4.0"
     },
     "devDependencies": {

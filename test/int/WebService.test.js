@@ -29,8 +29,8 @@ describe("WebService INT", function() {
                 middlewares: [
                     function(req, res, next) {
 
-                        if (req.url === "/kiz") {
-                            return res.status(201).end("abteilungsleiter");
+                        if (req.url === "/xd") {
+                            return res.status(201).end("xd");
                         }
 
                         next();
@@ -63,21 +63,29 @@ describe("WebService INT", function() {
     });
 
     it("should be able to make a web request to the middleware endpoint", function(done) {
-        request(`http://localhost:${port}/kiz`, (error, response, body) => {
+        request(`http://localhost:${port}/xd`, (error, response, body) => {
             assert.ifError(error);
             assert.equal(response.statusCode, 201);
-            assert.equal(body, "abteilungsleiter");
+            assert.equal(body, "xd");
             console.log(body);
             done();
         });
     });
 
     it("should be able to make a web request to the kafka endpoint", function(done) {
+
+        config.on("get-stats", () => {
+            config.emit("any-stats", "my-stats", {
+                test: "xd"
+            });
+        });
+
         request(`http://localhost:${port}/admin/kafka`, (error, response, body) => {
             assert.ifError(error);
             assert.equal(response.statusCode, 200);
             body = JSON.parse(body);
             assert.equal(body.kafka.producerStats.totalPublished, 0);
+            assert.equal(body.other["my-stats"].test, "xd");
             console.log(body);
             done();
         });

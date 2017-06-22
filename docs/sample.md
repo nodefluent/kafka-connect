@@ -158,4 +158,5 @@ const properties = {
 
     GET /admin/kafka
     GET /admin/metrics
+    GET /admin/stats
 ```

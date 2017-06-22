@@ -48,3 +48,20 @@ parentConfig.emit("model-delete", "id");
 // "record-read" -> whenever a record is polled from db in a source task
 parentConfitg.emit("record-read", "key");
 ```
+
+## Adding Custom Stats to /admin/stats
+
+```es6
+//listen for a stats request
+config.on("get-stats", () => {
+
+    const statsKey = "postgres";
+    const statsValue = {
+        connections: 5,
+        otherStuff: {}
+    };
+
+    //emit stats event with key and value
+    config.emit("any-stats", statsKey, statsValue);
+});
+```

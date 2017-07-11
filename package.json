@@ -34,7 +34,7 @@
         "bluebird": "^3.5.0",
         "body-parser": "^1.17.2",
         "express": "^4.15.3",
-        "prom-client": "^9.1.0",
+        "prom-client": "^10.0.2",
         "sinek": "^4.4.0"
     },
     "devDependencies": {

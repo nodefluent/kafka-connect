@@ -35,7 +35,7 @@
         "body-parser": "^1.17.2",
         "express": "^4.15.3",
         "prom-client": "^10.0.2",
-        "sinek": "^5.0.0"
+        "sinek": "^5.0.1"
     },
     "devDependencies": {
         "coveralls": "^2.13.1",

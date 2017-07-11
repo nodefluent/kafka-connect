@@ -18,7 +18,9 @@ describe("WebService INT", function() {
     before(function(done) {
 
         const properties = {
-            kafka: {},
+            kafka: {
+                kafkaHost: "localhost"
+            },
             topic: "topic",
             partitions: 30,
             maxTasks: 1,

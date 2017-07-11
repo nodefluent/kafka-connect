@@ -196,7 +196,9 @@ describe("Common UNIT", function() {
     }
 
     const config = {
-        kafka: {},
+        kafka: {
+            kafkaHost: "localhost"
+        },
         topic: "topic",
         partitions: 30,
         maxTasks: 1,

@@ -112,7 +112,7 @@ class JsonConverter extends Converter {
 const properties = {
     kafka: {
         //zkConStr: "localhost:2181/kafka",
-        kafkaHost: "localhost:9092/",
+        kafkaHost: "localhost:9092",
         logger: null,
         groupId: "nkc-test",
         clientName: "nkc-test-name",

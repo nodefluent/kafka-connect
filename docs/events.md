@@ -46,7 +46,7 @@ parentConfig.emit("model-upsert", "id");
 parentConfig.emit("model-delete", "id");
 
 // "record-read" -> whenever a record is polled from db in a source task
-parentConfitg.emit("record-read", "key");
+parentConfig.emit("record-read", "key");
 ```
 
 ## Adding Custom Stats to /admin/stats

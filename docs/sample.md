@@ -148,6 +148,10 @@ const properties = {
 };
 ```
 
+## SSL Configuration
+
+can be found [here](https://github.com/nodefluent/node-sinek/tree/master/ssl-example)
+
 ## Automatically exposed http endpoints
 
 ```

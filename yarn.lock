@@ -123,7 +123,7 @@ binary@~0.3.0:
     buffers "~0.1.1"
     chainsaw "~0.1.0"
 
-bindings@1.2.1:
+bindings@1.2.1, bindings@1.x:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/bindings/-/bindings-1.2.1.tgz#14ad6113812d2d37d72e67b4cacb4bb726505f11"
 
@@ -978,7 +978,7 @@ murmurhash@~0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/murmurhash/-/murmurhash-0.0.2.tgz#6f07bd8a1105e709c26fc89420cb5930c24585fe"
 
-nan@2.3.5:
+nan@2.3.5, nan@2.x:
   version "2.3.5"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.3.5.tgz#822a0dc266290ce4cd3a12282ca3e7e364668a08"
 
@@ -1010,6 +1010,13 @@ node-gyp@3.4.0:
     semver "2.x || 3.x || 4 || 5"
     tar "^2.0.0"
     which "1"
+
+node-rdkafka@~1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/node-rdkafka/-/node-rdkafka-1.0.6.tgz#b1a4566f5396aaa97d4e29733b552baba651dd1c"
+  dependencies:
+    bindings "1.x"
+    nan "2.x"
 
 node-zookeeper-client@~0.2.2:
   version "0.2.2"
@@ -1310,9 +1317,9 @@ signal-exit@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
 
-sinek@^5.4.0:
-  version "5.4.0"
-  resolved "https://registry.yarnpkg.com/sinek/-/sinek-5.4.0.tgz#f0fe2649b682b2a176066b6d5dfe41ff1ecf2e6f"
+sinek@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/sinek/-/sinek-6.0.3.tgz#d86bc68a4a47865f77846bd501aa94014cfd78d3"
   dependencies:
     async "~2.5.0"
     bluebird "~3.5.0"
@@ -1320,6 +1327,8 @@ sinek@^5.4.0:
     kafka-node "^2.2.0"
     murmurhash "~0.0.2"
     uuid "~3.1.0"
+  optionalDependencies:
+    node-rdkafka "~1.0.6"
 
 snappy@^5.0.5:
   version "5.0.5"

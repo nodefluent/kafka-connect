@@ -4,8 +4,8 @@
     "description": "kafka-connect is a framework to move data via kafka",
     "main": "index.js",
     "scripts": {
-        "test": "istanbul cover _mocha -- --recursive --timeout 12500 -R spec test && istanbul check-coverage --statements 60",
-        "test-ci": "istanbul cover _mocha -- --recursive --report lcovonly -R spec test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+        "test": "istanbul cover _mocha -- --recursive --timeout 12500 --exit -R spec test && istanbul check-coverage --statements 60",
+        "test-ci": "istanbul cover _mocha -- --recursive --report lcovonly --exit -R spec test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
     },
     "repository": {
         "type": "git",

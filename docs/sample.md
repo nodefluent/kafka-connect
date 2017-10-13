@@ -144,7 +144,10 @@ const properties = {
             (req, res ,next) => { next(); }
         ]
     },
-    enableMetrics: true
+    enableMetrics: true,
+    batch: {
+        //sinek 1:n consumer mode batch options
+    }
 };
 ```
 

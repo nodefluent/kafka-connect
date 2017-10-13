@@ -62,3 +62,9 @@ sink.run().then();
 
 * [Implementation-Helper Overview](docs/sample.md)
 * [Framework Events](docs/events.md)
+
+
+## FAQ
+
+* Q: it is running slow / only synchronous / 1 by 1 messages ?
+* A: just set the config.batch object [as it is described here](https://github.com/nodefluent/node-sinek/tree/master/lib/librdkafka#advanced-1n-consumer-mode)

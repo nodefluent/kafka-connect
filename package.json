@@ -1,6 +1,6 @@
 {
     "name": "kafka-connect",
-    "version": "3.1.0",
+    "version": "3.2.0",
     "description": "kafka-connect is a framework to move data via kafka",
     "main": "index.js",
     "scripts": {
@@ -30,18 +30,18 @@
     },
     "homepage": "https://github.com/nodefluent/kafka-connect#readme",
     "dependencies": {
-        "async": "^2.4.1",
-        "bluebird": "^3.5.0",
-        "body-parser": "^1.17.2",
-        "express": "^4.15.4",
-        "prom-client": "^10.0.3",
-        "sinek": "^6.5.0"
+        "async": "~2.6.0",
+        "bluebird": "~3.5.1",
+        "body-parser": "~1.18.2",
+        "express": "~4.16.2",
+        "prom-client": "~10.2.2",
+        "sinek": "~6.14.0"
     },
     "devDependencies": {
-        "coveralls": "^3.0.0",
-        "istanbul": "~0.4.2",
-        "mocha": "~4.0.0",
-        "mocha-lcov-reporter": "^1.3.0",
-        "request": "^2.81.0"
+        "coveralls": "~3.0.0",
+        "istanbul": "~0.4.5",
+        "mocha": "~4.0.1",
+        "mocha-lcov-reporter": "~1.3.0",
+        "request": "~2.83.0"
     }
 }

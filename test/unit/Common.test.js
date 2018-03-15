@@ -344,8 +344,7 @@ describe("Common UNIT", function() {
                     offset: 5,
                     topic: "test",
                     value: JSON.stringify(record)
-                }, error => {
-                    assert.ifError(error);
+                }, () => {
                     sink.stop();
                     done();
                 });
@@ -364,8 +363,7 @@ describe("Common UNIT", function() {
                         offset: 5,
                         topic: "test",
                         value: JSON.stringify(record)
-                    }, error => {
-                        assert.ifError(error);
+                    }, () => {
                         sink.stop();
                         resolve();
                     });
@@ -385,8 +383,7 @@ describe("Common UNIT", function() {
                         offset: 5,
                         topic: "test",
                         value: JSON.stringify(record)
-                    }, error => {
-                        assert.ok(error);
+                    }, () => {
                         sink.stop();
                         resolve();
                     });

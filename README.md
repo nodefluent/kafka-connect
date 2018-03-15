@@ -63,6 +63,9 @@ sink.run().then();
 * [Implementation-Helper Overview](docs/sample.md)
 * [Framework Events](docs/events.md)
 
+## Debugging
+
+* You can use `DEBUG=kafka-connect:*` to debug the sink configuration.
 
 ## FAQ
 

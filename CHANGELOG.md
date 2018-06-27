@@ -1,5 +1,9 @@
 # Changelog
 
+## 2018-06-27, Version: 3.4.0
+
+* updated dependencies
+
 ## 2018-03-15, Version: 3.3.0
 
 * added debug logs to sink config

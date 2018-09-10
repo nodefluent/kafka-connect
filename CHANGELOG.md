@@ -1,5 +1,16 @@
 # Changelog
 
+## 2018-09-10, Version: 3.5.0
+
+* added typescript definitions
+* updated dependencies:
+
+prom-client  ~11.0.0  →  ~11.1.1
+sinek        ~6.18.0  →  ~6.22.0
+request      ~2.87.0  →  ~2.88.0
+bluebird   ~3.5.1  →  ~3.5.2
+coveralls  ~3.0.1  →  ~3.0.2
+
 ## 2018-06-27, Version: 3.4.0
 
 * updated dependencies

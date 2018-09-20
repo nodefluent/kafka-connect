@@ -1,5 +1,9 @@
 # Changelog
 
+## 2018-09-20, Version: 3.5.1
+
+* shipping fix for node-sinek
+
 ## 2018-09-10, Version: 3.5.0
 
 * added typescript definitions

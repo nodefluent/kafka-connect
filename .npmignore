@@ -1,0 +1,6 @@
+coverage/
+docs/
+test/
+.gitignore
+.jshintrc
+.travis.yml

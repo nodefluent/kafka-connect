@@ -1,5 +1,10 @@
 # Changelog
 
+## 2018-09-20, Version: 3.6.0
+
+* added advanced types for kafka config properties
+* upgraded dependencies
+
 ## 2018-09-20, Version: 3.5.1
 
 * shipping fix for node-sinek

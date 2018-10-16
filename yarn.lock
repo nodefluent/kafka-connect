@@ -298,7 +298,7 @@ debug@2.6.9, debug@^2.1.3:
   dependencies:
     ms "2.0.0"
 
-debug@3.1.0, debug@~3.1.0:
+debug@3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
   dependencies:
@@ -307,6 +307,12 @@ debug@3.1.0, debug@~3.1.0:
 debug@~4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.0.1.tgz#f9bb36d439b8d1f0dd52d8fb6b46e4ebb8c1cd5b"
+  dependencies:
+    ms "^2.1.1"
+
+debug@~4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.1.0.tgz#373687bffa678b38b1cd91f861b63850035ddc87"
   dependencies:
     ms "^2.1.1"
 
@@ -736,7 +742,7 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
-kafka-node@~3.0.0:
+kafka-node@~3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/kafka-node/-/kafka-node-3.0.1.tgz#7d0a630a952f742f7c792be24fa762e0b9b488d6"
   dependencies:
@@ -898,9 +904,9 @@ node-abi@^2.2.0:
   dependencies:
     semver "^5.4.1"
 
-node-rdkafka@~2.4.1:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/node-rdkafka/-/node-rdkafka-2.4.1.tgz#01a8f8834100c9bdde27c4260fee0220c0252349"
+node-rdkafka@~2.4.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/node-rdkafka/-/node-rdkafka-2.4.2.tgz#90228f8fb1e1087555bea830699fd52faa7c9a4d"
   dependencies:
     bindings "1.x"
     nan "2.x"
@@ -1215,20 +1221,20 @@ simple-get@^2.7.0:
     once "^1.3.1"
     simple-concat "^1.0.0"
 
-sinek@~6.22.2:
-  version "6.22.2"
-  resolved "https://registry.yarnpkg.com/sinek/-/sinek-6.22.2.tgz#54c9b148185407e979a553c12c3cea551d83d865"
+sinek@~6.23.0:
+  version "6.23.1"
+  resolved "https://registry.yarnpkg.com/sinek/-/sinek-6.23.1.tgz#cc0335fec982816ec8d00c078f244e86fc286606"
   dependencies:
     async "~2.6.1"
     bluebird "~3.5.2"
-    debug "~3.1.0"
-    kafka-node "~3.0.0"
+    debug "~4.1.0"
+    kafka-node "~3.0.1"
     lodash.merge "~4.6.1"
     murmur2-partitioner "~1.0.0"
     murmurhash "~0.0.2"
     uuid "~3.3.2"
   optionalDependencies:
-    node-rdkafka "~2.4.1"
+    node-rdkafka "~2.4.2"
 
 snappy@^6.0.1:
   version "6.1.0"

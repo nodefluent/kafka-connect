@@ -37,7 +37,7 @@
         "debug": "~4.0.1",
         "express": "~4.16.3",
         "prom-client": "~11.1.2",
-        "sinek": "~6.22.2"
+        "sinek": "~6.23.0"
     },
     "devDependencies": {
         "coveralls": "~3.0.2",

@@ -1,5 +1,10 @@
 # Changelog
 
+## 2019-01-09, Version: 3.7.0
+
+* fixed produce buffer call in SourceConfig
+* upgraded dependencies
+
 ## 2018-09-20, Version: 3.6.0
 
 * added advanced types for kafka config properties

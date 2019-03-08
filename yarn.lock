@@ -1363,10 +1363,10 @@ simple-get@^2.7.0:
     once "^1.3.1"
     simple-concat "^1.0.0"
 
-sinek@~6.24.0:
-  version "6.24.0"
-  resolved "https://registry.yarnpkg.com/sinek/-/sinek-6.24.0.tgz#97d42aecc7dcc235d6b420c6abddced5d77cb9d4"
-  integrity sha512-0T176/xBOi5VPEZ6okxoHHrKUCzAUBCoIYlAd5Mfnvm8Rb7vesg2ZB5dUy1+mjfFPU3MRJkbPVFYOXm1EZWjsA==
+sinek@~6.26.0:
+  version "6.26.0"
+  resolved "https://registry.yarnpkg.com/sinek/-/sinek-6.26.0.tgz#074ec8c3860625b5ab990e049a0bbcb2aa2171d4"
+  integrity sha512-WKmAMenWtwMUXdLDghnaRcMnipWOSOaT4cFnDj8aXAE2UWn3l+66e7HZJJy9LumJCVYEcPlSmIuYlvxsAhpfFw==
   dependencies:
     async "~2.6.1"
     bluebird "~3.5.3"

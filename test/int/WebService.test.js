@@ -9,17 +9,17 @@ const {
     SourceConfig,
 } = require("./../../index.js");
 
-describe("WebService INT", function() {
+describe("WebService INT", function () {
 
     let config = null;
     let port = 1337;
     let error = null;
 
-    before(function(done) {
+    before(function (done) {
 
         const properties = {
             kafka: {
-                kafkaHost: "localhost"
+                noptions: {}
             },
             topic: "topic",
             partitions: 30,
@@ -29,7 +29,7 @@ describe("WebService INT", function() {
             http: {
                 port,
                 middlewares: [
-                    function(req, res, next) {
+                    function (req, res, next) {
 
                         if (req.url === "/xd") {
                             return res.status(201).end("xd");
@@ -51,11 +51,11 @@ describe("WebService INT", function() {
         setTimeout(done, 300);
     });
 
-    after(function() {
+    after(function () {
         config.close();
     });
 
-    it("should be able to make a web request to the health endpoint", function(done) {
+    it("should be able to make a web request to the health endpoint", function (done) {
         request(`http://localhost:${port}/admin/health`, (error, response, body) => {
             assert.ifError(error);
             assert.equal(response.statusCode, 200);
@@ -64,7 +64,7 @@ describe("WebService INT", function() {
         });
     });
 
-    it("should be able to make a web request to the middleware endpoint", function(done) {
+    it("should be able to make a web request to the middleware endpoint", function (done) {
         request(`http://localhost:${port}/xd`, (error, response, body) => {
             assert.ifError(error);
             assert.equal(response.statusCode, 201);
@@ -74,7 +74,7 @@ describe("WebService INT", function() {
         });
     });
 
-    it("should be able to make a web request to the kafka endpoint", function(done) {
+    it("should be able to make a web request to the kafka endpoint", function (done) {
 
         config.on("get-stats", () => {
             config.emit("any-stats", "my-stats", {
@@ -93,7 +93,7 @@ describe("WebService INT", function() {
         });
     });
 
-    it("should be able to make a web request to the metrics endpoint", function(done) {
+    it("should be able to make a web request to the metrics endpoint", function (done) {
         request(`http://localhost:${port}/admin/metrics`, (error, response, body) => {
             assert.ifError(error);
             assert.equal(response.statusCode, 200);
@@ -105,7 +105,7 @@ describe("WebService INT", function() {
         });
     });
 
-    it("should be able to make a web request to the root endpoint", function(done) {
+    it("should be able to make a web request to the root endpoint", function (done) {
         request(`http://localhost:${port}/`, (error, response, body) => {
             assert.ifError(error);
             assert.equal(response.statusCode, 200);
@@ -117,7 +117,7 @@ describe("WebService INT", function() {
         });
     });
 
-    it("should not see any errors", function() {
+    it("should not see any errors", function () {
         assert.ifError(error);
     });
 });

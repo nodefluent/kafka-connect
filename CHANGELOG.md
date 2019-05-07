@@ -1,5 +1,9 @@
 # Changelog
 
+## 2019-05-07, Version: 3.8.0
+
+* upgraded dependencies
+
 ## 2019-01-09, Version: 3.7.0
 
 * fixed produce buffer call in SourceConfig

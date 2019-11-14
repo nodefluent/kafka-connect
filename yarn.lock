@@ -111,6 +111,11 @@ async@^2.6.2, async@~2.6.2:
   dependencies:
     lodash "^4.17.11"
 
+async@~3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/async/-/async-3.1.0.tgz#42b3b12ae1b74927b5217d8c0016baaf62463772"
+  integrity sha512-4vx/aaY6j/j3Lw3fbCHNWP0pPaTCew3F6F3hYyl/tHs/ndmV1q7NW9T5yuJ2XAGwdQrP+6Wu20x06U4APo/iQQ==
+
 asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
@@ -178,6 +183,11 @@ bluebird@~3.5.4:
   version "3.5.4"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.4.tgz#d6cc661595de30d5b3af5fcedd3c0b3ef6ec5714"
   integrity sha512-FG+nFEZChJrbQ9tIccIfZJBz3J7mLrAhxakAbnrJWn8d7aKOC+LWifa0G+p4ZqKp4y13T7juYvdhq9NzKdsrjw==
+
+bluebird@~3.7.0:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.1.tgz#df70e302b471d7473489acf26a93d63b53f874de"
+  integrity sha512-DdmyoGCleJnkbp3nkbxTLJ18rjDsE4yCggEwKNXkeV123sPNfOCYeDoeuOY+F2FrSjO1YXcTU+dsy96KMy+gcg==
 
 body-parser@1.18.3:
   version "1.18.3"
@@ -1085,6 +1095,13 @@ kafka-node@~4.1.3:
   optionalDependencies:
     snappy "^6.0.1"
 
+kafkajs@1.11.0:
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/kafkajs/-/kafkajs-1.11.0.tgz#d9599b02ada63ec7c63948b6ddfe0bc3a02c6dcc"
+  integrity sha512-dLRCcFIBygZucR+e8U2ZqH2wgMrAu114K0szUyUseJoeOii3cG5bHZPIdqKecXxI6begPVCfGS3R0nJY4zHW2A==
+  dependencies:
+    long "^4.0.0"
+
 lcid@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/lcid/-/lcid-2.0.0.tgz#6ef5d2df60e52f82eb228a4c373e8d1f397253cf"
@@ -1113,10 +1130,10 @@ locate-path@^3.0.0:
     p-locate "^3.0.0"
     path-exists "^3.0.0"
 
-lodash.merge@~4.6.1:
-  version "4.6.1"
-  resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.1.tgz#adc25d9cb99b9391c59624f379fbba60d7111d54"
-  integrity sha512-AOYza4+Hf5z1/0Hztxpm2/xiPZgi/cjMqdnKTUWTBSKchJlxXXuUSxCCl8rJlf4g6yww/j6mA8nC8Hw/EZWxKQ==
+lodash.merge@~4.6.2:
+  version "4.6.2"
+  resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
+  integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
 
 lodash@^4.17.11, lodash@^4.17.4:
   version "4.17.11"
@@ -1139,6 +1156,11 @@ long@1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/long/-/long-1.1.2.tgz#eaef5951ca7551d96926b82da242db9d6b28fb53"
   integrity sha1-6u9ZUcp1UdlpJrgtokLbnWso+1M=
+
+long@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/long/-/long-4.0.0.tgz#9a7b71cfb7d361a194ea555241c92f7468d5bf28"
+  integrity sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==
 
 map-age-cleaner@^0.1.1:
   version "0.1.3"
@@ -1333,10 +1355,10 @@ node-environment-flags@1.0.5:
     object.getownpropertydescriptors "^2.0.3"
     semver "^5.7.0"
 
-node-rdkafka@~2.6.1:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/node-rdkafka/-/node-rdkafka-2.6.1.tgz#87171ad5f45d8405dcc4d987b7b606c8a763344b"
-  integrity sha512-mBRq7/7hgnRmbfX8TLPK0JVQYxu/kkuHVT4W7vLXc6wQoV5JfInpV0hWtkGIBjNzFyYSk0faJDIqlDQ2k9vy9Q==
+node-rdkafka@2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/node-rdkafka/-/node-rdkafka-2.7.0.tgz#3e96fc3dd31f28a7c4fea6277f943a88da84edc2"
+  integrity sha512-pSO60jT0AC0eEzXlRxUoNpEp7nCdtglHMBJ2r5lP0y+TqXDAUrV1it1ZtXfi4yeKShksLdRfMI/jeLXWXMMpLA==
   dependencies:
     bindings "^1.3.1"
     nan "^2.11.1"
@@ -1810,21 +1832,22 @@ simple-get@^2.7.0:
     once "^1.3.1"
     simple-concat "^1.0.0"
 
-sinek@~7.29.3:
-  version "7.29.3"
-  resolved "https://registry.yarnpkg.com/sinek/-/sinek-7.29.3.tgz#a60d1d0ace907f6249d8883c5941a0b3caad92cf"
-  integrity sha512-I8a9XR2x8Kadl6r6r7gAR+bBW+z3dezIHosm0CfIqv1eDxlBwl+HNo4WgDwazoAIuvxbq7s4QLp+K6WxS32G5Q==
+sinek@~8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/sinek/-/sinek-8.0.0.tgz#b416739d49c99009bae30b6a8df3f7e9e78b89f5"
+  integrity sha512-jda5qXSyKFOuf+VJVM0ibZelm4X8qTuQnvTPhWbjTRj+6kw5RJDzUDyO7A2O76oZvjzmoaRhRx8JXkjR2VDCPA==
   dependencies:
-    async "~2.6.2"
-    bluebird "~3.5.4"
+    async "~3.1.0"
+    bluebird "~3.7.0"
     debug "~4.1.1"
-    lodash.merge "~4.6.1"
+    kafkajs "1.11.0"
+    lodash.merge "~4.6.2"
     murmur2-partitioner "~1.0.0"
     murmurhash "~0.0.2"
-    node-rdkafka "~2.6.1"
-    uuid "~3.3.2"
+    uuid "~3.3.3"
   optionalDependencies:
     kafka-node "~4.1.3"
+    node-rdkafka "2.7.0"
 
 snappy@^6.0.1:
   version "6.1.2"
@@ -2072,10 +2095,15 @@ utils-merge@1.0.1:
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
   integrity sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
 
-uuid@^3.0.0, uuid@^3.3.2, uuid@~3.3.2:
+uuid@^3.0.0, uuid@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
   integrity sha512-yXJmeNaw3DnnKAOKJE51sL/ZaYfWJRl1pK9dr19YFCu0ObS231AB1/LbqTKRAQ5kw8A90rA6fr4riOUpTZvQZA==
+
+uuid@~3.3.3:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.3.tgz#4568f0216e78760ee1dbf3a4d2cf53e224112866"
+  integrity sha512-pW0No1RGHgzlpHJO1nsVrHKpOEIxkGg1xB+v0ZmdNH5OAeAwzAVrCnI2/6Mtx+Uys6iaylxa+D3g4j63IKKjSQ==
 
 vary@~1.1.2:
   version "1.1.2"

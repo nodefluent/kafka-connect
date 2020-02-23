@@ -19,7 +19,11 @@ describe("WebService INT", function () {
 
         const properties = {
             kafka: {
-                noptions: {}
+                noptions: {
+                    "metadata.broker.list": "localhost:9092",
+                    "group.id": "example-group",
+                    "client.id": "example-client",
+                }
             },
             topic: "topic",
             partitions: 30,

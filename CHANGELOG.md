@@ -1,5 +1,10 @@
 # Changelog
 
+## 2020-02-20, Version: 3.9.0
+
+* upgraded dependencies
+* JSConsumer and JSProducer are now the default clients, replacing the native versions
+
 ## 2019-05-07, Version: 3.8.0
 
 * upgraded dependencies

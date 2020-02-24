@@ -1,9 +1,22 @@
 # Changelog
 
-## 2020-02-20, Version: 3.9.0
+## 2020-02-24, Version: 4.0.0
 
 * upgraded dependencies
-* JSConsumer and JSProducer are now the default clients, replacing the native versions
+
+### A note on native mode
+
+If you are using the native mode (`config: { noptions: {} }`).
+You will have to manually install `node-rdkafka` alongside kafka-connect.
+(This requires a Node.js version between 9 and 12 and will not work with Node.js >= 13, last tested with 12.16.1)
+
+On Mac OS High Sierra / Mojave:
+`CPPFLAGS=-I/usr/local/opt/openssl/include LDFLAGS=-L/usr/local/opt/openssl/lib yarn add --frozen-lockfile node-rdkafka@2.7.4`
+
+Otherwise:
+`yarn add --frozen-lockfile node-rdkafka@2.7.4`
+
+(Please also note: Doing this with npm does not work, it will remove your deps, `npm i -g yarn`)
 
 ## 2019-05-07, Version: 3.8.0
 
